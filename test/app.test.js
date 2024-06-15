@@ -9,7 +9,10 @@ const { sum, data, isEven } = require("../src/app");
 
     toBeFalsy() is used to check if the value is falsy or not.
     falsy values are: false, 0, "", null, undefined, and NaN.
-    
+
+    toThrow() is used to check if the function throws an error or not.
+    optionally, you can also check the error message by passing the error message as an argument to toThrow().
+    in that case, the test will pass only if the error message matches the provided message.
 */
 
 test("Test 1: 1 + 2 should be 3", () => {
@@ -39,4 +42,12 @@ test("Test 4: 5 is not an even number", () => {
 
 test("Test 5: 10 is an even number", () => {
     expect(isEven(10)).toBeTruthy();
+});
+
+test("Test 7: throws error when argument is not a number", () => {
+    expect(() => isEven("10")).toThrow();
+});
+
+test("Test 6: throws error when arguments are not numbers", () => {
+    expect(() => sum("1", 2)).toThrow("Both arguments should be numbers");
 });

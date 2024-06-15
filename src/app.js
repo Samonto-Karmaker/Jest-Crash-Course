@@ -1,4 +1,9 @@
-const sum = (a, b) => a + b;
+const sum = (a, b) => {
+    if (typeof a !== "number" || typeof b !== "number") {
+        throw new Error("Both arguments should be numbers");
+    }
+    return a + b;
+};
 
 const data = {
     userName: "John Doe",
@@ -9,9 +14,14 @@ const data = {
         state: "NY",
         country: "USA",
     },
-}
+};
 
-const isEven = (num) => num % 2 === 0;
+const isEven = (num) => {
+    if (typeof num !== "number") {
+        throw new Error("Argument should be a number");
+    }
+    return num % 2 === 0;
+};
 
 module.exports = {
     sum,
