@@ -4,6 +4,8 @@ const { data } = require("../src/app");
 /* 
     toBe() is used to compare the primitive values or to check referential identity of object instances.
     toEqual() is used to compare the values of two objects.
+    toHaveProperty() is used to check if the object has a property or not.
+    not is used to negate the matcher
 */
 
 test("Test 1: 1 + 2 should be 3", () => {
@@ -21,4 +23,8 @@ test("Test 2: Object data should match", () => {
             country: "USA",
         },
     });
+});
+
+test("Test 3: data should not include password", () => {
+    expect(data).not.toHaveProperty("password");
 });
