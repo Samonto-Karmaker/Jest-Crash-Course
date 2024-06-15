@@ -1,0 +1,14 @@
+{
+  "name": "jest-crash-course",
+  "version": "1.0.0",
+  "description": "A crash course from FreeCodeCamp to learn javascript testing using jest",
+  "main": "index.js",
+  "scripts": {
+    "jest": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Samonto Karmaker",
+  "license": "ISC",
+  "dependencies": {
+    "jest": "^29.7.0"
+  }
+}
