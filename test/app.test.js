@@ -21,6 +21,10 @@ const {
     toThrow() is used to check if the function throws an error or not.
     optionally, you can also check the error message by passing the error message as an argument to toThrow().
     in that case, the test will pass only if the error message matches the provided message.
+
+    toMatchObject() is used to check if the object has the properties and values defined in the expected object.
+    expect.any() is used to check if the value is of the expected type.
+    expect.objectContaining() is used to check if the object has the properties defined in the expected object.
 */
 
 test("Test 1: 1 + 2 should be 3", () => {
@@ -28,6 +32,16 @@ test("Test 1: 1 + 2 should be 3", () => {
 });
 
 test("Test 2: Object data should match", () => {
+    expect(data).toMatchObject({
+        userName: expect.any(String),
+        age: expect.any(Number),
+        email: expect.any(String),
+        address: expect.objectContaining({
+            city: expect.any(String),
+            state: expect.any(String),
+            country: expect.any(String),
+        }),
+    });
     expect(data).toEqual({
         userName: "John Doe",
         age: 25,
