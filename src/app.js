@@ -11,7 +11,10 @@ const data = {
     },
 }
 
+const isEven = (num) => num % 2 === 0;
+
 module.exports = {
     sum,
     data,
+    isEven,
 };
