@@ -1,4 +1,11 @@
-const { sum, data, isEven } = require("../src/app");
+const {
+    sum,
+    data,
+    isEven,
+    fetchDataCallback,
+    fetchDataPromise,
+    fetchDataAsync,
+} = require("../src/app");
 
 /* 
     toBe() is used to compare the primitive values or to check referential identity of object instances.
@@ -44,10 +51,48 @@ test("Test 5: 10 is an even number", () => {
     expect(isEven(10)).toBeTruthy();
 });
 
-test("Test 7: throws error when argument is not a number", () => {
+test("Test 6: throws error when argument is not a number", () => {
     expect(() => isEven("10")).toThrow();
 });
 
-test("Test 6: throws error when arguments are not numbers", () => {
+test("Test 7: throws error when arguments are not numbers", () => {
     expect(() => sum("1", 2)).toThrow("Both arguments should be numbers");
+});
+
+/* 
+    Let's learn testing async code in the next section.
+    1. callback functions
+    2. promises
+    3. async/await
+
+    done() is used to tell Jest that the test is complete.
+*/
+
+test("Test 8: callback function", (done) => {
+    try {
+        fetchDataCallback((response) => {
+            expect(response).toEqual(null, data);
+            done();
+        });
+    } catch (error) {
+        expect(error).toBeDefined();
+        done();
+    }
+});
+
+test("Test 9: promise", async () => {
+    try {
+        await expect(fetchDataPromise()).resolves.toEqual(data);
+    } catch (error) {
+        await expect(fetchDataPromise()).rejects.toEqual("Data not found");
+    }
+});
+
+test("Test 10: async/await", async () => {
+    try {
+        const response = await fetchDataAsync();
+        expect(response).toEqual(data);
+    } catch (error) {
+        await expect(fetchDataAsync()).rejects.toEqual("Data not found");
+    }
 });
