@@ -5,6 +5,7 @@ const {
     fetchDataCallback,
     fetchDataPromise,
     fetchDataAsync,
+    greet,
 } = require("../src/app");
 
 /* 
@@ -95,4 +96,23 @@ test("Test 10: async/await", async () => {
     } catch (error) {
         await expect(fetchDataAsync()).rejects.toEqual("Data not found");
     }
+});
+
+/*
+    Let's learn mocking in the next section.
+    Mocking is used to replace a function with a fake implementation.
+    It is useful when you want to test a function that depends on another function.
+*/
+
+test("Test 11: greet function", () => {
+    // Mocking getGreeting function to return "Hello"
+    const getGreeting = jest.fn(() => "Hello");
+
+    // Call greet function with getGreeting function and name
+    const result = greet(getGreeting, "John");
+
+    // Assert the result
+    expect(result).toBe("Hello John");
+    expect(getGreeting).toHaveBeenCalled();
+    expect(getGreeting).toHaveBeenCalledTimes(1);
 });

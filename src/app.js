@@ -60,6 +60,11 @@ const fetchDataAsync = async () => {
     });
 }
 
+//Let Greet people - getGreeting does not exist; We will mock it in the test
+const greet = (getGreeting, name) => {
+    return `${getGreeting()} ${name}`;
+}
+
 module.exports = {
     sum,
     data,
@@ -67,4 +72,5 @@ module.exports = {
     fetchDataCallback,
     fetchDataPromise,
     fetchDataAsync,
+    greet,
 };
